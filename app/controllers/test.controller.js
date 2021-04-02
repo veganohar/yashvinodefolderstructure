@@ -30,3 +30,16 @@ exports.dataquery = (req,res)=>{
     console.log(req.query);
     res.send(req.query);
 }
+
+
+exports.testejs = (req,res)=>{
+    
+    let customer = {
+        name : "Manohar",
+        age:27,
+        email:"manohar@gmail.com",
+        phone:9492901901
+    }
+
+    res.render("pages/test",{user:customer}); 
+}
