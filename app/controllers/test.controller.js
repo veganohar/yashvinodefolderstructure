@@ -43,3 +43,13 @@ exports.testejs = (req,res)=>{
 
     res.render("pages/test",{user:customer}); 
 }
+
+exports.dataForm =  (req, res)=>{
+    console.log(req.body);
+    res.render("pages/result",{data:req.body}); 
+ }
+
+ exports.ejsform = (req,res)=>{  
+    res.render("pages/form");  
+}
+

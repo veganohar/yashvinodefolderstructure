@@ -18,5 +18,7 @@ module.exports = function(app){
       app.post("/dataparams/:name/:city",controller.dataparams);
       app.post("/dataquery",controller.dataquery);
       app.get("/testejs",controller.testejs);
+      app.post('/dataForm',controller.dataForm);
+      app.get('/ejsform',controller.ejsform);
 
 }
