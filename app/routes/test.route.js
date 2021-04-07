@@ -21,4 +21,6 @@ module.exports = function(app){
       app.post('/dataForm',controller.dataForm);
       app.get('/ejsform',controller.ejsform);
 
+      app.post("/api/clubs/createNewClub",controller.createNewClub)
+
 }

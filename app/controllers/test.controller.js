@@ -1,4 +1,5 @@
-
+const db = require("../models");
+const Club = db.club;
 
 exports.testget = (req, res) => {
     res.send("Get Call is Working");
@@ -53,3 +54,22 @@ exports.dataForm =  (req, res)=>{
     res.render("pages/form");  
 }
 
+
+exports.createNewClub = (req,res)=>{
+    let data = req.body;
+    let club = new Club();
+    for(let p in data){
+        club[p] = data[p];
+    }
+
+    club.save(data,(err,response)=>{
+        if(err){
+            return res.status(500).send({message:err});   
+        }
+        res.send({
+            data:response
+        })
+    })
+
+
+}
