@@ -66,10 +66,45 @@ exports.createNewClub = (req,res)=>{
         if(err){
             return res.status(500).send({message:err});   
         }
-        res.send({
-            data:response
+        res.status(201).send({
+            data:response,
+            message:"Record Stored Successfully"
         })
     })
+}
 
+exports.getAllClubs =(req,res)=>{
+    Club.find((err,clubs)=>{
+        if(err){
+            return res.status(500).send({message:err});   
+        }
+        res.send({
+            data:clubs,
+            message:"Records Retrieved Successfully"
+        })
+    })
+}
 
+exports.updateClub = (req,res)=>{
+    Club.updateOne({_id:req.body.id},req.body,(err,response)=>{
+        if(err){
+            return res.status(500).send({message:err});   
+        }
+        res.status(204).send({
+            data:response,
+            message:"Record Updated Successfully"
+        })
+    })
+}
+
+exports.deleteClub = (req,res)=>{
+    Club.deleteOne({_id:req.params.cid},(err,response)=>{
+        if(err){
+            return res.status(500).send({message:err});   
+        }
+        res.status(204).send({
+            data:response,
+            message:"Record Deleted Successfully"
+        })
+    })
 }
