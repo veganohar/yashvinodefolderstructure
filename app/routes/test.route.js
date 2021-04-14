@@ -20,6 +20,7 @@ module.exports = function(app){
       app.get("/testejs",controller.testejs);
       app.post('/dataForm',controller.dataForm);
       app.get('/ejsform',controller.ejsform);
+      app.get('/ejstable',controller.ejstable);
 
       app.post("/api/clubs/createNewClub",controller.createNewClub);
       app.get("/api/clubs/getAllClubs",controller.getAllClubs);

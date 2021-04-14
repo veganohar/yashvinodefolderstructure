@@ -46,14 +46,33 @@ exports.testejs = (req,res)=>{
 }
 
 exports.dataForm =  (req, res)=>{
-    console.log(req.body);
-    res.render("pages/result",{data:req.body}); 
+    let data = req.body;
+    let club = new Club();
+    for(let p in data){
+        club[p] = data[p];
+    }
+    club.save(data,(err,response)=>{
+        if(err){
+            return res.status(500).send({message:err});   
+        }
+        // res.render("pages/result",{data:req.body}); 
+        res.redirect("/ejstable",); 
+    })
  }
 
  exports.ejsform = (req,res)=>{  
     res.render("pages/form");  
 }
 
+exports.ejstable = (req,res)=>{  
+    Club.find((err,clubs)=>{
+        if(err){
+            return res.status(500).send({message:err});   
+        }
+        res.render("pages/table",{clubs:clubs});
+    })
+      
+}
 
 exports.createNewClub = (req,res)=>{
     let data = req.body;
