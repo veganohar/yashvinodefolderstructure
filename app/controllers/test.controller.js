@@ -51,7 +51,7 @@ exports.dataForm =  (req, res)=>{
     for(let p in data){
         club[p] = data[p];
     }
-    club.save(data,(err,response)=>{
+    club.save(club,(err,response)=>{
         if(err){
             return res.status(500).send({message:err});   
         }
